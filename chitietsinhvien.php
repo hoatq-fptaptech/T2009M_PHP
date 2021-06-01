@@ -8,6 +8,7 @@
     <title>Chi tiết thông tin sinh viên</title>
 </head>
 <body>
+    <a href="list.php"><< Trở lại</a>
     <?php
         $sv = [
             "name"=>"Nguyễn Văn An",

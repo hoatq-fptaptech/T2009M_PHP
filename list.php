@@ -26,7 +26,7 @@
     <h1>Danh sách sinh viên:</h1>
     <ul>
         <?php foreach ($list as $item){ ?>
-           <li><?php echo $item["name"]."-".$item["tel"];?></li>
+            <li><a href="chitietsinhvien.php"> <?php echo $item["name"]."-".$item["tel"];?></a></li>
        <?php }?>
     </ul>
 </body>
