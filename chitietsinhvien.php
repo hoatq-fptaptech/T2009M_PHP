@@ -10,11 +10,30 @@
 <body>
     <a href="list.php"><< Trở lại</a>
     <?php
-        $sv = [
-            "name"=>"Nguyễn Văn An",
-            "age"=>22,
-            "tel"=>"0987661"
-        ];
+       // phải lấy được id của sinh viên từ URL
+        $id = $_GET["id"];
+        // truy van sinh vien theo id
+        // b1 connect db
+        $servername = "localhost";
+        $username = "root";
+        $password = ""; // neu dung mamp thi $password="root";
+        $dbname = "t2009m_php";
+
+        $conn = new mysqli($servername,$username,$password,$dbname); // create connection
+        // kiem tra ket noi
+        if($conn->connect_error){
+            die("connect error..."); // die sẽ làm dừng chương trình tại đây
+        }
+        //    echo "Connect successfully";
+        $sql_txt = "select * from sinhviens where id = $id";
+        $rs = $conn->query($sql_txt);
+        $sv = null;
+        if($rs->num_rows>0){ // kiem tra xem co du lieu hay ko
+            while ($row = $rs->fetch_assoc()){
+                $sv = $row;
+            }
+        }
+        if($sv == null) header("Location: list.php"); // redirect ve list neu ko tim thay sv
     ?>
     <ul>
         <?php foreach ($sv as $key=>$value){?>
