@@ -2,7 +2,7 @@
 session_start();
 $dssv_xuatsac = [];
 if($_SESSION["sv_xs"]){
-    $dssv_xuatsac =  $_SESSION["sv_xs"];
+    $dssv_xuatsac =  $_SESSION["sv_xs"]; //lấy từ session danh sách đã thêm từ trang khác
 }
 ?>
 <!doctype html>
