@@ -14,7 +14,7 @@
         // b1 connect db
         $servername = "localhost";
         $username = "root";
-        $password = ""; // neu dung mamp thi $password="root";
+        $password = "root"; // neu dung mamp thi $password="root";
         $dbname = "t2009m_php";
 
         $conn = new mysqli($servername,$username,$password,$dbname); // create connection
@@ -35,7 +35,10 @@
     <a href="themsinhvien.php">Thêm sinh viên</a>
     <ul>
         <?php foreach ($dssinhvien as $item){ ?>
-            <li><a href="chitietsinhvien.php?id=<?php echo $item["id"]; ?>"> <?php echo $item["name"]."--".$item["tel"];?></a></li>
+            <li><a href="chitietsinhvien.php?id=<?php echo $item["id"]; ?>"> <?php echo $item["name"]."--".$item["tel"];?></a>
+                <a href="suasinhvien.php?id=<?php echo $item["id"]; ?>">Sửa</a>
+                <a href="xoasinhvien.php?id=<?php echo $item["id"]; ?>">Xóa</a>
+            </li>
         <?php } ?>
     </ul>
 </body>
