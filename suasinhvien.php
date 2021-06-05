@@ -1,3 +1,4 @@
+<?php include_once "database.php";?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,17 +13,7 @@
     // lay chi tiet sinh vien theo id
     $id = $_GET["id"];
     // truy van sinh vien theo id
-    // b1 connect db
-    $servername = "localhost";
-    $username = "root";
-    $password = "root"; // neu dung mamp thi $password="root";
-    $dbname = "t2009m_php";
-
-    $conn = new mysqli($servername,$username,$password,$dbname); // create connection
-    // kiem tra ket noi
-    if($conn->connect_error){
-        die("connect error..."); // die sẽ làm dừng chương trình tại đây
-    }
+   $conn = connectDB();
     //    echo "Connect successfully";
     $sql_txt = "select * from sinhviens where id = $id";
     $rs = $conn->query($sql_txt);
@@ -34,6 +25,7 @@
     }
     if($sv == null) header("Location: list.php"); // redirect ve list neu ko tim thay sv
 ?>
+<h1><?php echo $_COOKIE["title"];?></h1>
 <form action="capnhatsinhvien.php" method="post">
     <input name="id"  value="<?php echo $sv["id"];?>" type="hidden"/>
     <input name="name" type="text" placeholder="Name" value="<?php echo $sv["name"];?>"/>

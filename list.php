@@ -1,3 +1,4 @@
+<?php include_once "database.php";?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,34 +11,19 @@
 </head>
 <body>
     <?php
-        // lay sinh vien tu db
-        // b1 connect db
-        $servername = "localhost";
-        $username = "root";
-        $password = "root"; // neu dung mamp thi $password="root";
-        $dbname = "t2009m_php";
+        setcookie("title","Xin chao T2009M",time()+3600,"/t2009m_php");// set vào key là title 1 giá trị string , thời gian là 36000
 
-        $conn = new mysqli($servername,$username,$password,$dbname); // create connection
-        // kiem tra ket noi
-    if($conn->connect_error){
-        die("connect error..."); // die sẽ làm dừng chương trình tại đây
-    }
-//    echo "Connect successfully";
         $sql_txt = "select * from sinhviens";
-        $rs = $conn->query($sql_txt);
-        $dssinhvien = [];
-        if($rs->num_rows>0){ // kiem tra xem co du lieu hay ko
-            while ($row = $rs->fetch_assoc()){
-                $dssinhvien[] = $row;
-            }
-        }
+        $dssinhvien = queryDB($sql_txt);
     ?>
     <a href="themsinhvien.php">Thêm sinh viên</a>
+    <a href="danhsachxuatsac.php">SV xuất sắc</a>
     <ul>
         <?php foreach ($dssinhvien as $item){ ?>
             <li><a href="chitietsinhvien.php?id=<?php echo $item["id"]; ?>"> <?php echo $item["name"]."--".$item["tel"];?></a>
                 <a href="suasinhvien.php?id=<?php echo $item["id"]; ?>">Sửa</a>
                 <a href="xoasinhvien.php?id=<?php echo $item["id"]; ?>">Xóa</a>
+                <a href="svxuatsac.php?id=<?php echo $item["id"]; ?>">SV xuất sắc</a>
             </li>
         <?php } ?>
     </ul>

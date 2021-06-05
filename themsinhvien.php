@@ -8,6 +8,7 @@
     <title>Thêm sinh viên</title>
 </head>
 <body>
+<h1><?php echo $_COOKIE["title"];?></h1>
     <form action="luusinhvien.php" method="post">
         <input name="name" type="text" placeholder="Name"/>
         <input name="age" type="number" placeholder="Age"/>
