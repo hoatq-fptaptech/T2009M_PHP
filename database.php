@@ -3,7 +3,7 @@
         // b1 connect db
         $servername = "localhost";
         $username = "root";
-        $password = "root"; // neu dung mamp thi $password="root" con xampp password="";
+        $password = ""; // neu dung mamp thi $password="root" con xampp password="";
         $dbname = "t2009m_php";
 
         $conn = new mysqli($servername,$username,$password,$dbname); // create connection
