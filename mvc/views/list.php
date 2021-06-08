@@ -13,7 +13,7 @@
 <a href="#">SV xuất sắc</a>
 <ul>
     <?php foreach ($dssinhvien as $item){ ?>
-        <li><a href="#"> <?php echo $item["name"]."--".$item["tel"];?></a>
+        <li><a href="?route=chitietsv&id=<?php echo $item["id"];?>"> <?php echo $item["name"]."--".$item["tel"];?></a>
             <a href="#">Sửa</a>
             <a href="#">Xóa</a>
             <a href="#">SV xuất sắc</a>

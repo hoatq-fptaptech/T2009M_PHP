@@ -27,4 +27,8 @@ class WebController{
         updateDB($sql_txt);
         header("Location: ?route=list");
     }
+
+    public function chitietSV(){
+        echo $_GET["id"];
+    }
 }

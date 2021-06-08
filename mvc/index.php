@@ -7,5 +7,6 @@
        case "list": $controller->listSV();break;
        case "themsv": $controller->themSV();break;
        case "luusv": $controller->luuSV();break;
+       case "chitietsv": $controller->chitietSV();break;
        default: $controller->home();
    }
