@@ -1,5 +1,6 @@
 <?php
-include_once "../database.php";
+//include_once "../database.php";
+include_once "models/SinhVien.php";
 class WebController{
     public function home(){
         // tra ve giao dien trang chu
@@ -10,8 +11,10 @@ class WebController{
     }
 
     public function listSV(){
-        $sql_txt = "select * from sinhviens";
-        $dssinhvien = queryDB($sql_txt);
+//        $sql_txt = "select * from sinhviens";
+//        $dssinhvien = queryDB($sql_txt);
+        $sv = new SinhVien();
+        $dssinhvien = $sv->all();
         include "views/list.php";
     }
 
@@ -20,15 +23,13 @@ class WebController{
     }
 
     public function luuSV(){
-        $name = $_POST["name"];
-        $age = $_POST["age"];
-        $tel = $_POST["tel"];
-        $sql_txt = "insert into sinhviens (name,age,tel) values ('$name',$age,'$tel')";
-        updateDB($sql_txt);
+        $sv = new SinhVien();
+        $sv->save($_POST);
         header("Location: ?route=list");
     }
 
     public function chitietSV(){
-        echo $_GET["id"];
+        $sv = new SinhVien();
+        $sinhvien = $sv->find($_GET["id"]);
     }
 }
